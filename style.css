@@ -1,0 +1,434 @@
+/* ===== Global Reset ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #6366f1;
+    --primary-dark: #4f46e5;
+    --background: #f5f6ff;
+    --text: #1e293b;
+    --muted: #8490a5;
+    --border: #e8eaf2;
+    --white: #ffffff;
+    --danger: #ef476f;
+}
+
+body {
+    min-height: 100vh;
+    padding: 35px 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: var(--text);
+    background:
+        radial-gradient(circle at 10% 10%, #dedfff 0, transparent 32%),
+        radial-gradient(circle at 90% 90%, #e1f7ff 0, transparent 32%),
+        var(--background);
+}
+
+/* ===== Main Card ===== */
+.parent {
+    width: 560px;
+    max-width: 100%;
+    padding: 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    background: rgba(255, 255, 255, 0.94);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 26px;
+    box-shadow: 0 25px 70px rgba(56, 65, 120, 0.13);
+    backdrop-filter: blur(15px);
+}
+
+/* ===== Heading ===== */
+.parent h1 {
+    position: relative;
+    font-size: 34px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: var(--text);
+    margin-bottom: 4px;
+}
+
+.parent h1::after {
+    content: "";
+    display: block;
+    width: 55px;
+    height: 4px;
+    margin: 10px auto 0;
+    border-radius: 10px;
+    background: linear-gradient(90deg, var(--primary), #a78bfa);
+}
+
+/* ===== Text Inputs ===== */
+input[type="text"] {
+    width: 100%;
+    min-width: 0;
+    padding: 15px 17px;
+    border: 1.5px solid var(--border);
+    border-radius: 14px;
+    outline: none;
+    background: #fafbff;
+    color: var(--text);
+    font-family: inherit;
+    font-size: 14px;
+    transition: border-color 0.25s, box-shadow 0.25s,
+        background 0.25s;
+}
+
+input[type="text"]::placeholder {
+    color: #a0a8b9;
+}
+
+input[type="text"]:focus {
+    background: var(--white);
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.11);
+}
+
+/* ===== Error Message ===== */
+#error {
+    width: 100%;
+    margin-top: -14px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--danger);
+}
+
+/* ===== Add / Update Buttons ===== */
+.btns {
+    width: 100%;
+    display: flex;
+    gap: 12px;
+}
+
+.btns button {
+    flex: 1;
+    padding: 13px 16px;
+    border: none;
+    border-radius: 13px;
+    color: white;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s,
+        filter 0.2s;
+}
+
+#add {
+    background: linear-gradient(135deg, #7778ff, #5149df);
+    box-shadow: 0 5px 14px rgba(99, 102, 241, 0.19);
+}
+
+#update {
+    background: linear-gradient(135deg, #ff9a76, #f45d76);
+    box-shadow: 0 5px 14px rgba(244, 93, 118, 0.16);
+}
+
+.btns button:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.04);
+}
+
+#add:hover {
+    box-shadow: 0 8px 20px rgba(99, 102, 241, 0.28);
+}
+
+#update:hover {
+    box-shadow: 0 8px 20px rgba(244, 93, 118, 0.25);
+}
+
+.btns button:active {
+    transform: scale(0.98);
+}
+
+/* ===== Search and Filters ===== */
+.category {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+    padding: 15px;
+    border: 1px solid #eef0f8;
+    border-radius: 18px;
+    background: #f8f9ff;
+}
+
+#search {
+    background: white;
+}
+
+.category .btn {
+    display: flex;
+    gap: 9px;
+    width: 100%;
+}
+
+.category .btn button {
+    flex: 1;
+    padding: 10px 8px;
+    border: 1px solid #e8eaf5;
+    border-radius: 10px;
+    background: white;
+    color: #69748b;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.category .btn button:hover {
+    color: white;
+    background: var(--primary);
+    border-color: var(--primary);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(99, 102, 241, 0.15);
+}
+
+.category .btn button:active {
+    transform: scale(0.97);
+}
+
+/* ===== Task Count ===== */
+#totaltask {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 11px;
+    background: #f0f0ff;
+    color: var(--primary-dark);
+    font-size: 13px;
+    font-weight: 700;
+    text-align: right;
+}
+
+/* ===== Task List ===== */
+#addtask {
+    width: 100%;
+    max-height: 320px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 3px 5px 5px 2px;
+}
+
+/* ===== Individual Task ===== */
+.eachtask {
+    width: 100%;
+    min-height: 62px;
+    padding: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    box-shadow: 0 3px 12px rgba(40, 50, 90, 0.035);
+    transition: border-color 0.25s, box-shadow 0.25s,
+        transform 0.25s;
+    animation: taskAppear 0.25s ease both;
+}
+
+.eachtask:hover {
+    border-color: #d7d6ff;
+    box-shadow: 0 7px 18px rgba(40, 50, 90, 0.08);
+    transform: translateY(-2px);
+}
+
+@keyframes taskAppear {
+    from {
+        opacity: 0;
+        transform: translateY(7px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== Checkbox ===== */
+.eachtask input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    accent-color: var(--primary);
+    cursor: pointer;
+}
+
+/* ===== Task Text ===== */
+.eachtaskp {
+    flex: 1;
+    min-width: 0;
+    overflow-wrap: anywhere;
+    font-size: 14px;
+    line-height: 1.6;
+    font-weight: 600;
+    color: #334155;
+}
+
+/* ===== Edit and Delete Icons ===== */
+.eachtask i {
+    flex-shrink: 0;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    font-size: 17px;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+}
+
+.eachtask i:hover {
+    transform: scale(1.08);
+    background: #f1f2ff;
+}
+
+.eachtask i:active {
+    transform: scale(0.94);
+}
+
+/* ===== Clear All Button ===== */
+#clear {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #ffdee5;
+    border-radius: 13px;
+    background: #fff1f4;
+    color: #e33e61;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+#clear:hover {
+    background: linear-gradient(135deg, #ff5475, #e6385d);
+    border-color: transparent;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 7px 18px rgba(230, 56, 93, 0.2);
+}
+
+#clear:active {
+    transform: scale(0.98);
+}
+
+/* ===== Empty Error Handling ===== */
+small:empty {
+    display: none;
+}
+
+/* ===== Scrollbar ===== */
+#addtask::-webkit-scrollbar {
+    width: 5px;
+}
+
+#addtask::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#addtask::-webkit-scrollbar-thumb {
+    background: #d1d5e5;
+    border-radius: 10px;
+}
+
+#addtask::-webkit-scrollbar-thumb:hover {
+    background: #9ca3c9;
+}
+
+/* ===== Tablet ===== */
+@media (max-width: 600px) {
+    body {
+        padding: 20px 12px;
+        align-items: flex-start;
+    }
+
+    .parent {
+        width: 100%;
+        margin: auto 0;
+        padding: 25px 18px;
+        gap: 17px;
+        border-radius: 22px;
+    }
+
+    .parent h1 {
+        font-size: 29px;
+    }
+
+    #addtask {
+        max-height: 350px;
+    }
+}
+
+/* ===== Small Mobile ===== */
+@media (max-width: 380px) {
+    body {
+        padding: 12px 8px;
+    }
+
+    .parent {
+        padding: 22px 13px;
+        gap: 15px;
+    }
+
+    .parent h1 {
+        font-size: 25px;
+    }
+
+    input[type="text"] {
+        padding: 13px 12px;
+        font-size: 13px;
+    }
+
+    .category {
+        padding: 10px;
+    }
+
+    .category .btn {
+        gap: 5px;
+    }
+
+    .category .btn button {
+        padding: 9px 4px;
+        font-size: 11px;
+    }
+
+    .eachtask {
+        gap: 7px;
+        padding: 10px;
+    }
+
+    .eachtaskp {
+        font-size: 13px;
+    }
+
+    .eachtask i {
+        width: 29px;
+        height: 29px;
+        font-size: 15px;
+    }
+}
+
+/* ===== Reduced Motion ===== */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}
